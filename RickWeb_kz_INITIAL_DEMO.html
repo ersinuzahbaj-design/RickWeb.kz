@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>RickWeb.kz — DEMO</title>
+<style>
+:root{
+  --bg:#060711;
+  --panel:#0d1020;
+  --panel2:#12172a;
+  --text:#f5f7ff;
+  --muted:#9ba5bd;
+  --cyan:#46d9ff;
+  --green:#67f5a5;
+  --purple:#8b5cff;
+  --border:rgba(255,255,255,.10);
+  --shadow:0 24px 70px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  color:var(--text);background:
+  radial-gradient(circle at 20% 0%,rgba(70,217,255,.12),transparent 30%),
+  radial-gradient(circle at 80% 10%,rgba(139,92,255,.16),transparent 25%),
+  var(--bg);
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.45;
+  background-image:radial-gradient(#fff 1px,transparent 1px);
+  background-size:55px 55px;mask-image:linear-gradient(to bottom,#000,transparent 80%);
+}
+a{text-decoration:none;color:inherit}
+.nav{
+  position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;
+  padding:16px 5%;backdrop-filter:blur(18px);background:rgba(6,7,17,.72);border-bottom:1px solid var(--border);
+}
+.brand{font-size:24px;font-weight:900;letter-spacing:.5px}
+.brand span{color:var(--cyan)}
+.navlinks{display:flex;gap:24px;color:var(--muted);font-size:14px}
+.navlinks a:hover{color:white}
+.demo-badge{font-size:12px;padding:7px 11px;border:1px solid rgba(103,245,165,.35);color:var(--green);border-radius:999px;background:rgba(103,245,165,.08)}
+.hero{
+  min-height:620px;padding:70px 5% 50px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+}
+.kicker{color:var(--cyan);font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(42px,7vw,92px);line-height:.94;margin:16px 0;font-weight:950;letter-spacing:-4px}
+h1 .accent{color:var(--cyan);text-shadow:0 0 35px rgba(70,217,255,.28)}
+.hero p{max-width:650px;color:var(--muted);font-size:18px;line-height:1.7}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{border:0;padding:14px 19px;border-radius:13px;font-weight:800;cursor:pointer;transition:.2s}
+.btn.primary{background:linear-gradient(135deg,var(--cyan),#7a7dff);color:#061019}
+.btn.secondary{background:rgba(255,255,255,.06);border:1px solid var(--border);color:white}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.hero-card{
+  min-height:390px;border:1px solid var(--border);border-radius:28px;overflow:hidden;position:relative;box-shadow:var(--shadow);
+  background:radial-gradient(circle at 55% 35%,rgba(103,245,165,.45),transparent 12%),
+  radial-gradient(circle at 52% 37%,rgba(70,217,255,.22),transparent 28%),
+  linear-gradient(145deg,#11182b,#070914 72%);
+}
+.portal{position:absolute;width:280px;height:280px;border-radius:50%;left:50%;top:46%;transform:translate(-50%,-50%);
+  background:radial-gradient(circle,#baffda 0 4%,#31d987 5% 10%,#0c3d33 24%,#07171a 43%,transparent 64%);
+  filter:drop-shadow(0 0 25px rgba(103,245,165,.65));
+  animation:pulse 3s ease-in-out infinite;
+}
+@keyframes pulse{50%{transform:translate(-50%,-50%) scale(1.07);filter:drop-shadow(0 0 45px rgba(103,245,165,.85))}}
+.hero-card::after{content:"RICKWEB.KZ";position:absolute;left:28px;bottom:22px;font-size:28px;font-weight:950;letter-spacing:1px}
+.card-note{position:absolute;top:20px;left:22px;color:#c7cde0;font-size:12px;padding:8px 11px;border:1px solid var(--border);border-radius:999px;background:rgba(0,0,0,.25)}
+.section{padding:30px 5% 70px;position:relative}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}
+.section h2{font-size:30px;margin:0}
+.section p{color:var(--muted);margin:8px 0 0}
+.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.season{
+  min-height:205px;padding:16px;border:1px solid var(--border);border-radius:18px;overflow:hidden;position:relative;
+  background:linear-gradient(160deg,#141b33,#090b16);cursor:pointer;transition:.25s;
+}
+.season:hover{transform:translateY(-5px);border-color:rgba(70,217,255,.45)}
+.season .num{font-size:42px;font-weight:950;color:rgba(255,255,255,.12);position:absolute;right:12px;top:5px}
+.season .orb{width:72px;height:72px;border-radius:50%;margin-top:45px;background:radial-gradient(circle at 35% 30%,#fff, var(--cyan) 12%,var(--purple) 45%,#151a35 72%);box-shadow:0 0 30px rgba(70,217,255,.22)}
+.season:nth-child(2) .orb{background:radial-gradient(circle at 35% 30%,#fff,var(--green) 10%,#187a6a 42%,#141a32 73%)}
+.season:nth-child(3) .orb{background:radial-gradient(circle at 35% 30%,#fff,#ffcc66 10%,#bd5c4c 42%,#27162a 73%)}
+.season:nth-child(4) .orb{background:radial-gradient(circle at 35% 30%,#fff,#9b8cff 10%,#5635bd 42%,#17132a 73%)}
+.season:nth-child(5) .orb{background:radial-gradient(circle at 35% 30%,#fff,#f45dce 10%,#9d287b 42%,#241020 73%)}
+.season:nth-child(6) .orb{background:radial-gradient(circle at 35% 30%,#fff,#5ddcff 10%,#247cbd 42%,#0d2030 73%)}
+.season b{display:block;margin-top:18px}.season small{color:var(--muted)}
+.feature-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+.player{
+  border:1px solid var(--border);border-radius:24px;min-height:390px;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at center,rgba(70,217,255,.16),transparent 28%),linear-gradient(145deg,#11192c,#070811);
+  position:relative;overflow:hidden;
+}
+.player::before{content:"DEMO VIDEO PLAYER";position:absolute;top:20px;left:22px;font-size:11px;letter-spacing:2px;color:var(--muted)}
+.play{width:86px;height:86px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:28px;cursor:pointer}
+.play:hover{background:rgba(70,217,255,.18)}
+.info{border:1px solid var(--border);border-radius:24px;background:rgba(255,255,255,.035);padding:28px}
+.info h3{font-size:28px;margin:0 0 8px}.info p{line-height:1.7;color:var(--muted)}
+.credit{margin-top:20px;padding:16px;border-radius:16px;background:rgba(103,245,165,.07);border:1px solid rgba(103,245,165,.18)}
+.credit strong{color:var(--green)}
+.notice{margin-top:20px;padding:22px;border-radius:20px;border:1px solid rgba(255,190,90,.2);background:rgba(255,190,90,.06);color:#ddd1b5;line-height:1.65}
+footer{padding:35px 5%;border-top:1px solid var(--border);color:var(--muted);text-align:center}
+.modal{position:fixed;inset:0;display:none;z-index:50;place-items:center;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);padding:20px}
+.modal.show{display:grid}.modal-box{max-width:560px;width:100%;padding:28px;border-radius:24px;background:#111426;border:1px solid var(--border);box-shadow:var(--shadow)}
+.modal-box h3{margin-top:0;font-size:26px}.modal-box p{color:var(--muted);line-height:1.65}.modal-close{float:right;background:none;border:0;color:white;font-size:22px;cursor:pointer}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(3,1fr)}.feature-grid{grid-template-columns:1fr}.navlinks{display:none}.hero{min-height:auto}}
+@media(max-width:520px){h1{letter-spacing:-2px}.hero{padding-top:45px}.grid{grid-template-columns:repeat(2,1fr)}.season{min-height:180px}.hero-card{min-height:330px}.portal{width:230px;height:230px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="brand" href="#">RICK<span>WEB.KZ</span></a>
+  <div class="navlinks">
+    <a href="#home">Басты бет</a>
+    <a href="#seasons">Маусымдар</a>
+    <a href="#demo">DEMO</a>
+    <a href="#about">Жоба туралы</a>
+  </div>
+  <div class="demo-badge">● INITIAL DEMO</div>
+</nav>
+
+<main id="home">
+<section class="hero">
+  <div>
+    <div class="kicker">Жаңа веб-жоба • Бастапқы демонстрация</div>
+    <h1>RICK<span class="accent">WEB</span><br>.KZ</h1>
+    <p>Қазақша дубляждалған серияларды көрермендерге ыңғайлы түрде жинақтауға арналған веб-платформаның бастапқы демонстрациялық нұсқасы.</p>
+    <div class="actions">
+      <button class="btn primary" onclick="document.querySelector('#seasons').scrollIntoView({behavior:'smooth'})">DEMO көру ↓</button>
+      <button class="btn secondary" onclick="openModal()">Жоба қалай жұмыс істейді?</button>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="card-note">RICKWEB.KZ • CONCEPT</div>
+    <div class="portal"></div>
+  </div>
+</section>
+
+<section class="section" id="seasons">
+  <div class="section-head">
+    <div><h2>Маусымдар</h2><p>Бұл бөлім әзірге интерфейс демонстрациясы ретінде көрсетілген.</p></div>
+    <div class="demo-badge">6 DEMO CARD</div>
+  </div>
+  <div class="grid" id="seasonGrid"></div>
+</section>
+
+<section class="section" id="demo">
+  <div class="section-head">
+    <div><h2>Серия бетінің DEMO нұсқасы</h2><p>Нақты видео бұл бастапқы нұсқаға енгізілмеген.</p></div>
+  </div>
+  <div class="feature-grid">
+    <div class="player">
+      <button class="play" onclick="demoPlayer()" aria-label="Demo player">▶</button>
+    </div>
+    <div class="info">
+      <div class="kicker">SERIES PAGE PREVIEW</div>
+      <h3 id="episodeTitle">Маусым 1 • Серия 1</h3>
+      <p>Бұл жерде серия туралы ақпарат, эпизод атауы және рұқсат етілген форматтағы видео ойнатқыш орналасады.</p>
+      <div class="credit">
+        <strong>Қазақша дубляж:</strong><br>
+        ЖалғызDub авторлығы мен сілтемесі нақты және анық көрсетіледі.
+      </div>
+      <div class="actions"><button class="btn secondary" onclick="openModal()">Толық талаптар</button></div>
+    </div>
+  </div>
+  <div class="notice" id="about">
+    <b>⚠️ DEMO ЕСКЕРТУ:</b> Бұл файл — RickWeb.kz жобасының бастапқы интерфейс демонстрациясы. Мұнда нақты эпизодтар, жүктелген сериал видеолары немесе коммерциялық функциялар жоқ. Нақты контентті орналастыру форматы құқық иелерімен және дубляж авторларымен келісілгеннен кейін анықталады.
+  </div>
+</section>
+</main>
+
+<footer>
+  <b>RICKWEB.KZ</b> • Initial Demo • 2026<br><small>Қазақша контентке арналған веб-жоба концепті</small>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h3>RickWeb.kz қалай жұмыс істейді?</h3>
+    <p><b>1.</b> Пайдаланушы маусымды таңдайды.<br><br>
+    <b>2.</b> Серия бетіне өтеді.<br><br>
+    <b>3.</b> Серия туралы ақпарат пен авторлық мәліметтерді көреді.<br><br>
+    <b>4.</b> Қазақша дубляж авторы ретінде ЖалғызDub анық көрсетіледі және арнасына сілтеме беріледі.<br><br>
+    Бұл бастапқы DEMO нұсқада нақты видео контент жоқ.</p>
+    <button class="btn primary" onclick="closeModal()">Түсіндім</button>
+  </div>
+</div>
+
+<script>
+const grid=document.getElementById('seasonGrid');
+for(let i=1;i<=6;i++){
+  const card=document.createElement('div');
+  card.className='season';
+  card.innerHTML=`<span class="num">0${i}</span><div class="orb"></div><b>${i}-маусым</b><small>DEMO интерфейс</small>`;
+  card.onclick=()=>{document.getElementById('episodeTitle').textContent=`Маусым ${i} • Серия DEMO`;document.querySelector('#demo').scrollIntoView({behavior:'smooth'});}
+  grid.appendChild(card);
+}
+function openModal(){document.getElementById('modal').classList.add('show')}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function demoPlayer(){
+  const p=document.querySelector('.player');
+  p.innerHTML='<div style="text-align:center;padding:30px"><div style="font-size:42px;margin-bottom:12px">✓</div><b>Бұл DEMO ойнатқыш</b><p style="color:#9ba5bd">Нақты видео бұл бастапқы нұсқаға қосылмаған.</p></div>';
+}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal')closeModal()});
+</script>
+</body>
+</html>
